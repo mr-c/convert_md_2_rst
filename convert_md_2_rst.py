@@ -9,6 +9,9 @@ Ensure that the source path is in the Python sys path. For that
 purpose you may add this line to 'conf.py':
 
 sys.path.insert(0, os.path.abspath('.'))
+Copyright (c) 2015 Listatree
+License: The MIT License (MIT)
+Downloaded from https://github.com/listatree/convert_md_2_rst
 """
 
 import os
@@ -21,9 +24,9 @@ def setup(app):
             filename = os.path.join(dir, file)
 	    filename_parts = os.path.splitext(filename)
             if len(filename_parts) > 1:
-                filename_ext = filename_parts[1]
+                filename_ext = filename_parts[:-1]
                 if filename_ext == '.md':
-                    convert_md_2_rst_process(filename_parts[0])
+                    convert_md_2_rst_process(filename_parts[:-1][0])
 
 def convert_md_2_rst_process(filename_root):
     filename_source = filename_root + ".md"
